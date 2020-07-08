@@ -6,9 +6,12 @@ const path = require('path');
 const flash = require('connect-flash');
 const morgan = require('morgan');
 // const createError = require('http-errors');
+const { sequelize } = require('./models/index');
+
 
 const app = express();
 dotEnv.config();
+sequelize.sync();
 
 const env = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 4000;
